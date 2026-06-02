@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国现代诗人相似度匹配测试</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="icon">📜</span>
+            <h1>中国现代诗人 · 相似度匹配</h1>
+            <p class="subtitle">—— 1980年至今，寻找与你灵魂共鸣的诗人之心 ——</p>
+            <div class="divider-line"></div>
+        </header>
+
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('test')" id="tab-test">
+                <span class="tab-icon">🧩</span> 64题匹配测试
+            </button>
+            <button class="tab-btn" onclick="switchTab('poem')" id="tab-poem">
+                <span class="tab-icon">✒️</span> 诗歌评析
+            </button>
+        </div>
+
+        <div class="panel active" id="panel-test">
+            <div class="card">
+                <h3><span class="dot"></span>测试说明</h3>
+                <p style="font-size:0.9rem;color:var(--text-light);line-height:1.7;">
+                    本测试包含 <strong>64道</strong> 固定题目，涵盖从<strong>1980年至今</strong>中国现代诗人的<em>价值观、创作态度、生活趣事与精神气质</em>。
+                    请根据你的<strong>第一直觉</strong>选择最贴近自己的选项。完成全部题目后，系统将计算你与各位诗人的相似度，找到与你灵魂最契合的那位诗人。
+                </p>
+                <p style="font-size:0.8rem;color:#a09070;margin-top:8px;">
+                    ⏱ 预计用时：8-12分钟 &nbsp;|&nbsp; 📝 共64题 · 每页8题 · 共8页
+                </p>
+            </div>
+
+            <div class="progress-wrapper">
+                <div class="progress-info">
+                    <span id="progress-label">第 1 页 / 共 8 页</span>
+                    <span id="answered-count">已答：0 / 64</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill" style="width: 0%;"></div>
+                </div>
+                <div class="page-dots mt-12" id="page-dots"></div>
+            </div>
+
+            <div id="questions-container"></div>
+
+            <div class="btn-row" id="nav-buttons">
+                <button class="btn btn-outline" id="btn-prev" onclick="prevPage()" disabled>◀ 上一页</button>
+                <span class="page-indicator" id="page-indicator-text">第 1 / 8 页</span>
+                <button class="btn btn-primary" id="btn-next" onclick="nextPage()">下一页 ▶</button>
+            </div>
+            <div class="text-center mt-12">
+                <button class="btn btn-primary hidden" id="btn-submit" onclick="submitTest()" style="font-size:1.05rem;padding:14px 40px;">
+                    ✨ 提交查看结果
+                </button>
+            </div>
+
+            <div id="result-container" class="hidden"></div>
+        </div>
+
+        <div class="panel" id="panel-poem">
+            <div class="card">
+                <h3><span class="dot"></span>诗歌风格评析</h3>
+                <p style="font-size:0.9rem;color:var(--text-light);line-height:1.7;">
+                    将您的原创诗歌作品粘贴到下方，系统将从<strong>意象偏好、语言节奏、情感基调、用词风格</strong>等维度进行分析，
+                    找出与您风格最贴近的中国现代诗人。此功能<strong>独立于64题测试</strong>，可随时使用。
+                </p>
+            </div>
+
+            <div class="card">
+                <h3><span class="dot"></span>上传您的作品</h3>
+                <textarea class="poem-textarea" id="poem-input" placeholder="请在此处粘贴您的诗歌作品……&#10;&#10;例如：&#10;在微光中我看见了远山&#10;它们沉默如古老的经卷&#10;风翻动松针的页码&#10;每一片都写着未完成的信……"></textarea>
+                <div class="btn-row mt-12">
+                    <button class="btn btn-primary" onclick="analyzePoem()" id="btn-analyze">🔍 开始评析</button>
+                    <button class="btn btn-outline" onclick="clearPoem()">🗑 清空</button>
+                </div>
+                <div id="poem-result" class="hidden"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/main.js"></script>
+</body>
+</html>
